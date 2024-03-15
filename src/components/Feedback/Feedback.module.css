@@ -1,0 +1,11 @@
+.list{
+    
+    /* display: flex;
+    justify-content: space-around; */
+    font-size: 22px;
+    list-style: none;
+    width: 122;
+    height: 62;
+    margin-left: 0;
+    padding-top: 62px;
+}
