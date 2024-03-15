@@ -1,6 +1,6 @@
 import CSS from "./Feedback.module.css";
 
-const Feedback = ({ feedbacks, totalFeedback, mathPositive }) => {
+const Feedback = ({ feedbacks, totalFeedback, totalPositive }) => {
   return (
     <>
       <ul className={CSS.list}>
@@ -17,10 +17,7 @@ const Feedback = ({ feedbacks, totalFeedback, mathPositive }) => {
           Total <span>{totalFeedback}</span>
         </li>
         <li>
-          Positive{" "}
-          <span>
-            {mathPositive(feedbacks.good, feedbacks.neutral, totalFeedback)}%
-          </span>
+          Positive <span>{totalPositive}%</span>
         </li>
       </ul>
     </>

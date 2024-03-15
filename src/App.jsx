@@ -6,6 +6,8 @@ import Feedback from "./components/Feedback/Feedback";
 import Options from "./components/Options/Options";
 import Notification from "./components/Notification/Notification";
 
+import mathTotal from "./helpers/mathTotalPositive/mathTotalPositive";
+
 const feedbackObject = { good: 0, neutral: 0, bad: 0 };
 
 function App() {
@@ -17,16 +19,18 @@ function App() {
 
   const totalFeedback = feedbacks.good + feedbacks.neutral + feedbacks.bad;
 
+  const totalPositive = mathTotal(
+    feedbacks.good,
+    feedbacks.neutral,
+    totalFeedback
+  );
+
   const updateFeedback = (feedbackType) => {
     setFeedbacks({ ...feedbacks, [feedbackType]: feedbacks[feedbackType] + 1 });
   };
 
   const handleResetCounter = () => {
     setFeedbacks({ good: 0, neutral: 0, bad: 0 });
-  };
-
-  const mathPositive = (good, neutral, total) => {
-    return Math.round(((good + neutral) / total) * 100);
   };
 
   useEffect(() => {
@@ -46,7 +50,7 @@ function App() {
         <Feedback
           feedbacks={feedbacks}
           totalFeedback={totalFeedback}
-          mathPositive={mathPositive}
+          totalPositive={totalPositive}
         />
       ) : (
         <Notification />
